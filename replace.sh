@@ -25,8 +25,8 @@ rm ArrowCursor.png ArrowFarCursor.png IBeamCursor.png
 
 # Downloading the old cursors
 
-wget 'https://cdn.discordapp.com/attachments/711225037738213446/950020340359249930/ArrowCursor.png' &&
-wget 'https://cdn.discordapp.com/attachments/711225037738213446/950020340891922472/ArrowFarCursor.png' && 
-wget 'https://cdn.discordapp.com/attachments/711225037738213446/950061709756887110/IBeamCursor.png'
+wget 'https://raw.githubusercontent.com/Kqpa/old-roblox-cursors/master/assets/old/ArrowCursor.png' &&
+wget 'https://raw.githubusercontent.com/Kqpa/old-roblox-cursors/master/assets/old/ArrowFarCursor.png' && 
+wget 'https://raw.githubusercontent.com/Kqpa/old-roblox-cursors/master/assets/old/IBeamCursor.png'
 
 echo "Finished replacing. Restart ROBLOX if it's already running."
