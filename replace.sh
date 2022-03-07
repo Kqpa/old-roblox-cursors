@@ -37,7 +37,7 @@ printf "\n"
 
 for i in ${cursorNames[*]}; do
 	if rm $i; then
-    	echo "[rm]: Removed '$i'"; fi
+		echo "[rm]: Removed '$i'"; fi
 done
 
 # Downloading the old cursors
