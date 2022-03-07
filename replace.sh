@@ -1,14 +1,16 @@
 #!/usr/bin/env sh
 
-CURSOR_DIRECTORY=/Applications/Roblox.app/Contents/Resources/Content/Textures/Cursors/KeyboardMouse
+robloxDirectory=/Applications/Roblox.app
 
-CURSOR_NAMES=(
+cursorDirectory=/Contents/Resources/Content/Textures/Cursors/KeyboardMouse
+
+cursorNames=(
 	'ArrowCursor.png'
 	'ArrowFarCursor.png'
 	'IBeamCursor.png'
 )
 
-NEW_CURSORS=(	
+newCursors=(	
 	'https://raw.githubusercontent.com/Kqpa/old-roblox-cursors/master/assets/old/ArrowCursor.png' # ArrowCursor.png
 	'https://raw.githubusercontent.com/Kqpa/old-roblox-cursors/master/assets/old/ArrowFarCursor.png' # ArrowFarCursor.png
 	'https://raw.githubusercontent.com/Kqpa/old-roblox-cursors/master/assets/old/IBeamCursor.png' # IBeamCursor.png
@@ -16,16 +18,16 @@ NEW_CURSORS=(
 
 # Making sure that we're replacing the correct location
 
-printf "Cursor path is set to '$CURSOR_DIRECTORY'. Is this correct? [y/n]: " && read -r OPTION
+printf "Is ROBLOX installed on '$robloxDirectory'? [y/n]: " && read -r option
 
-if [[ "$OPTION" != "${OPTION#[Yyes]}" || -z "$OPTION" ]]; then
-	cd $CURSOR_DIRECTORY
+if [[ "$option" != "${option#[Yyes]}" || -z "$option" ]]; then
+	cd $robloxDirectory/$cursorDirectory
 else
-	printf "Enter the FULL path of the cursor location: " && read -r NEW_CURSOR_DIRECTORY
-	if [[ ! -d "$NEW_CURSOR_DIRECTORY" || -z "$NEW_CURSOR_DIRECTORY" ]] ;then 
+	printf "Enter the FULL path to the ROBLOX installation (Roblox.app): " && read -r newRobloxDirectory
+	if [[ ! -d "$newRobloxDirectory/$cursorDirectory" || -z "$newRobloxDirectory" ]] ;then
 		echo "Directory does not exist." && exit
 	else
-		cd $NEW_CURSOR_DIRECTORY
+		cd $newRobloxDirectory/$cursorDirectory
 	fi
 fi
 
@@ -33,29 +35,27 @@ fi
 
 printf "\n"
 
-for i in ${CURSOR_NAMES[*]}; do
+for i in ${cursorNames[*]}; do
 	if rm $i; then
-    	echo "[rm]: Cleaned '$i'"; fi
+    	echo "[rm]: Removed '$i'"; fi
 done
 
 # Downloading the old cursors
 
 printf "\n"
 
-i=0
-while [ $i -lt 3 ]; do
-	printf "[cURL]: Downloading '${CURSOR_NAMES[i]}'... "
-	if curl -s ${NEW_CURSORS[i]} -o ${CURSOR_NAMES[i]}; then
+for i in {0..2}; do
+	printf "[cURL]: Downloading '${cursorNames[i]}'... "
+	if curl -s ${newCursors[i]} -o ${cursorNames[i]}; then
 		echo "OK."; fi
-	i=`expr $i + 1`
 done
 
 # Summary message
 
 printf "\n"
 
-if [[ "$OPTION" != "${OPTION#[Yyes]}" || -z "$OPTION" ]]; then
-	echo "Finished replacing on '$CURSOR_DIRECTORY'. Restart ROBLOX if it's already running."
+if [[ "$option" != "${option#[Yyes]}" || -z "$option" ]]; then
+	echo "Finished replacing on '$robloxDirectory/.../$(basename $(dirname $cursorDirectory))/$(basename $cursorDirectory)'. Restart ROBLOX if it's already running."
 else
-	echo "Finished replacing on '$NEW_CURSOR_DIRECTORY'. Restart ROBLOX if it's already running."
+	echo "Finished replacing on '$newRobloxDirectory/.../$(basename $(dirname $cursorDirectory))/$(basename $cursorDirectory)'. Restart ROBLOX if it's already running."
 fi
