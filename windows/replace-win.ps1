@@ -76,9 +76,7 @@ for ($i = 0; $i -lt 3; $i++) {
         
         $printInfo = $cursorNames[$i]
         Write-Host -NoNewline "[Invoke-WebRequest]: Downloading '$printInfo'... "
-        $ProgressPreference = 'SilentlyContinue'
         Invoke-WebRequest -Uri $oldCursors[$i] -OutFile $cursorNames[$i] -ErrorAction Stop
-        $ProgressPreference = 'Continue'
         "OK."
     
     } catch {
