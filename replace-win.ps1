@@ -14,7 +14,9 @@ $newCursors = @(
 	'https://raw.githubusercontent.com/Kqpa/old-roblox-cursors/master/assets/old/IBeamCursor.png' # IBeamCursor.png
 )
 
-$option = $host.ui.PromptForChoice("Is ROBLOX instaleld on '$robloxDirectory'?","", @('Y','N'),0)
+# Making sure that we're replacing the correct location
+
+$option = $HOST.UI.PromptForChoice("Is ROBLOX instaleld on '$robloxDirectory'?", "", @('Y','N'), 0)
 
 if ($option -eq '0') {
 
@@ -27,49 +29,77 @@ if ($option -eq '0') {
     $newRobloxDirectory = Read-Host "Enter the FULL path to the ROBLOX installation (Roblox folder)"
 
     if ( -not (Test-Path -Path $newRobloxDirectory) -or !$newRobloxDirectory ) {
+        
         "Directory does not exist."
         exit
+    
     } else {
+
         Set-Location $newRobloxDirectory\Versions\
         Get-ChildItem version-* | Set-Location
         Set-Location $cursorDirectory
-    }
 
+    }
 
 }
 
-# Get-ChildItem version-* | Set-Location
+# Removing the old cursors
 
-# removing the old cursors
+""
 
-foreach ($i in $arrayName) {
+foreach ($i in $cursorNames) {
+    
     if (Test-Path $i) {
+       
         try {
+            
             Remove-Item $i
-            "Removed: $i"
+            "[rm]: Removed '$i'"
+        
         }
         catch {
+            
             Write-Warning $_.Exception.Message
+        
         }
+    
     }
+
 }
 
-for ($i = 0; $i < 3; $i++) {
+# Downloading the old cursors
+
+""
+
+for ($i = 0; $i -lt 3; $i++) {
 
     try {
+        
+        $printInfo = $cursorNames[$i]
+        Write-Host -NoNewline "[Invoke-WebRequest]: Downloading '$printInfo'... "
+        $ProgressPreference = 'SilentlyContinue'
         Invoke-WebRequest -Uri $newCursors[$i] -OutFile $cursorNames[$i] -ErrorAction Stop
+        $ProgressPreference = 'Continue'
+        "OK."
+    
     } catch {
+        
         Write-Warning $_.Exception.Message
+    
     }
 
 }
+
+# Summary message
+
+""
 
 if ($option -eq '0') {
 
-
+    "Finished replacing on '$robloxDirectory\...\Cursors\KeyboardMouse'. Restart ROBLOX if it's already running."
 
 } else {
 
-    "Finished replacing on '$robloxDirectory/.../"
+    "Finished replacing on '$newRobloxDirectory\...\Cursors\KeyboardMouse'. Restart ROBLOX if it's already running."
 
 }
