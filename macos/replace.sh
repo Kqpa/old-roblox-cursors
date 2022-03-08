@@ -10,7 +10,7 @@ cursorNames=(
 	'IBeamCursor.png'
 )
 
-newCursors=(	
+oldCursors=(	
 	'https://raw.githubusercontent.com/Kqpa/old-roblox-cursors/master/assets/old/ArrowCursor.png' # ArrowCursor.png
 	'https://raw.githubusercontent.com/Kqpa/old-roblox-cursors/master/assets/old/ArrowFarCursor.png' # ArrowFarCursor.png
 	'https://raw.githubusercontent.com/Kqpa/old-roblox-cursors/master/assets/old/IBeamCursor.png' # IBeamCursor.png
@@ -31,7 +31,7 @@ else
 	fi
 fi
 
-# Removing the old cursors
+# Removing the new cursors
 
 printf "\n"
 
@@ -46,7 +46,7 @@ printf "\n"
 
 for i in {0..2}; do
 	printf "[cURL]: Downloading '${cursorNames[i]}'... "
-	if curl -s ${newCursors[i]} -o ${cursorNames[i]}; then
+	if curl -s ${oldCursors[i]} -o ${cursorNames[i]}; then
 		echo "OK."; fi
 done
 

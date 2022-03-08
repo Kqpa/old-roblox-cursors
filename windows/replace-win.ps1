@@ -8,7 +8,7 @@ $cursorNames = @(
 	'IBeamCursor.png'
 )
 
-$newCursors = @(	
+$oldCursors = @(	
 	'https://raw.githubusercontent.com/Kqpa/old-roblox-cursors/master/assets/old/ArrowCursor.png', # ArrowCursor.png
 	'https://raw.githubusercontent.com/Kqpa/old-roblox-cursors/master/assets/old/ArrowFarCursor.png', # ArrowFarCursor.png
 	'https://raw.githubusercontent.com/Kqpa/old-roblox-cursors/master/assets/old/IBeamCursor.png' # IBeamCursor.png
@@ -43,7 +43,7 @@ if ($option -eq '0') {
 
 }
 
-# Removing the old cursors
+# Removing the new cursors
 
 ""
 
@@ -56,8 +56,7 @@ foreach ($i in $cursorNames) {
             Remove-Item $i
             "[rm]: Removed '$i'"
         
-        }
-        catch {
+        } catch {
             
             Write-Warning $_.Exception.Message
         
@@ -78,7 +77,7 @@ for ($i = 0; $i -lt 3; $i++) {
         $printInfo = $cursorNames[$i]
         Write-Host -NoNewline "[Invoke-WebRequest]: Downloading '$printInfo'... "
         $ProgressPreference = 'SilentlyContinue'
-        Invoke-WebRequest -Uri $newCursors[$i] -OutFile $cursorNames[$i] -ErrorAction Stop
+        Invoke-WebRequest -Uri $oldCursors[$i] -OutFile $cursorNames[$i] -ErrorAction Stop
         $ProgressPreference = 'Continue'
         "OK."
     
