@@ -10,7 +10,7 @@
 
 ```powershell
 Invoke-WebRequest -Uri `
-'https://raw.githubusercontent.com/Kqpa/old-roblox-cursors/windows/windows/replace-win.ps1' `
+'https://raw.githubusercontent.com/Kqpa/old-roblox-cursors/master/windows/replace-win.ps1' `
 -OutFile $HOME\replace-win.ps1; cd $HOME; .\replace-win.ps1; cd $HOME; Remove-Item .\replace-win.ps1
 ```
 
