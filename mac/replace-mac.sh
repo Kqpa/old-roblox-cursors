@@ -29,9 +29,9 @@ else
 
 	printf "Enter the FULL path to the ROBLOX installation (Roblox.app): " && read -r newRobloxDirectory
 
-	newRobloxDirectory=$(echo "${newRobloxDirectory}" | sed -e 's/^[[:space:]]*//')
+	newRobloxDirectory=`echo $newRobloxDirectory` # 'Trims' the string
 
-	if [[ ! -d "$newRobloxDirectory/$cursorDirectory" || -z "$newRobloxDirectory" ]] ;then
+	if [[ ! -d "$newRobloxDirectory" || -z "$newRobloxDirectory" ]] ;then
 		echo "Directory does not exist." && exit
 	else
 		cd $newRobloxDirectory/$cursorDirectory
