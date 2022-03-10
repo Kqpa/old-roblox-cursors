@@ -16,9 +16,9 @@ $oldCursors = @(
 
 # Making sure that we're replacing the correct location
 
-$option = $HOST.UI.PromptForChoice("Is ROBLOX instaleld on '$robloxDirectory'?", "", @('Y','N'), 0)
+if (Test-Path -Path $robloxDirectory) {
 
-if ($option -eq '0') {
+    "Roblox installation found on '$robloxDirectory'."
 
     Set-Location $robloxDirectory\Versions\
     Get-ChildItem version-* | Set-Location
@@ -26,7 +26,11 @@ if ($option -eq '0') {
 
 } else {
 
+    "Roblox installation could not be found on '$robloxDirectory'."
+
     $newRobloxDirectory = Read-Host "Enter the FULL path to the ROBLOX installation (Roblox folder)"
+
+    $newRobloxDirectory = $newRobloxDirectory.Trim()
 
     if ( -not (Test-Path -Path $newRobloxDirectory) -or !$newRobloxDirectory ) {
         
@@ -91,12 +95,4 @@ for ($i = 0; $i -lt 3; $i++) {
 
 ""
 
-if ($option -eq '0') {
-
-    "Finished replacing on '$robloxDirectory\...\Cursors\KeyboardMouse'. Restart ROBLOX if it's already running."
-
-} else {
-
-    "Finished replacing on '$newRobloxDirectory\...\Cursors\KeyboardMouse'. Restart ROBLOX if it's already running."
-
-}
+"Finished replacing. Restart ROBLOX if it's already running."
