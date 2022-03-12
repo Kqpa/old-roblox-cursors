@@ -4,9 +4,9 @@
 
 </div>
 
-**#1**: Press <kbd>CMD</kbd> + <kbd>Space</kbd> to open the Spotlight, then search for `Terminal` and hit enter.
+**1**: Press <kbd>CMD</kbd> + <kbd>Space</kbd> to open the Spotlight, then search for `Terminal` and hit enter.
 
-**#2**: Copy & paste the command below to the Terminal window and hit enter:
+**2**: Copy & paste the command below to the Terminal window and hit enter:
 
 <div align="center">
 

@@ -4,9 +4,9 @@
 
 </div>
 
-**#1**: Press the <kbd>Windows</kbd> key, then search for `PowerShell` and hit enter.
+**1**: Press the <kbd>Windows</kbd> key, then search for `PowerShell` and hit enter.
 
-**#2**: Copy & paste the command below to the PowerShell window and hit enter:
+**2**: Copy & paste the command below to the PowerShell window and hit enter:
 
 ```powershell
 Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/Kqpa/old-roblox-cursors/master/windows/replace-win.ps1' `
