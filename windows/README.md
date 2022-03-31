@@ -8,10 +8,13 @@
 
 **2**: Copy & paste the command below to the PowerShell window and hit enter:
 
+<div align="center">
+
 ```powershell
-Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/Kqpa/old-roblox-cursors/master/windows/replace-win.ps1' `
--OutFile $HOME\replace-win.ps1; cd $HOME; .\replace-win.ps1; cd $HOME; Remove-Item .\replace-win.ps1
+iwr 'https://raw.githubusercontent.com/Kqpa/old-roblox-cursors/master/windows/replace-win.ps1' -UseBasicParsing | iex
 ```
+
+</div>
 
 #
 
