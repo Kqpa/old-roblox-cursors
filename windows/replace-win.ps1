@@ -18,7 +18,7 @@ $oldCursors = @(
 
 if (Test-Path -Path $robloxDirectory) {
 
-    "Roblox installation found on '$robloxDirectory'."
+    Write-Output "Roblox installation found on '$robloxDirectory'."
 
     Set-Location $robloxDirectory\Versions\
     Get-ChildItem version-* | Set-Location
@@ -26,7 +26,7 @@ if (Test-Path -Path $robloxDirectory) {
 
 } else {
 
-    "Roblox installation could not be found on '$robloxDirectory'."
+    Write-Output "Roblox installation could not be found on '$robloxDirectory'."
 
     $newRobloxDirectory = Read-Host "Enter the FULL path to the ROBLOX installation (Roblox folder)"
 
@@ -34,7 +34,7 @@ if (Test-Path -Path $robloxDirectory) {
 
     if ( -not (Test-Path -Path $newRobloxDirectory) -or !$newRobloxDirectory ) {
         
-        "Directory does not exist."
+        Write-Output "Directory does not exist."
         exit
     
     } else {
@@ -58,7 +58,7 @@ foreach ($i in $cursorNames) {
         try {
             
             Remove-Item $i
-            "[rm]: Removed '$i'"
+            Write-Output "[rm]: Removed '$i'"
         
         } catch {
             
@@ -81,7 +81,7 @@ for ($i = 0; $i -lt 3; $i++) {
         $printInfo = $cursorNames[$i]
         Write-Host -NoNewline "[Invoke-WebRequest]: Downloading '$printInfo'... "
         Invoke-WebRequest -Uri $oldCursors[$i] -OutFile $cursorNames[$i] -ErrorAction Stop
-        "OK."
+        Write-Output "OK."
     
     } catch {
         
@@ -95,4 +95,6 @@ for ($i = 0; $i -lt 3; $i++) {
 
 ""
 
-"Finished replacing. Restart ROBLOX if it's already running."
+Set-Location $HOME
+
+Write-Output "Finished replacing. Restart ROBLOX if it's already running."

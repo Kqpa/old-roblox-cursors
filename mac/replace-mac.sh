@@ -67,4 +67,6 @@ done
 
 printf "\n"
 
+cd $HOME
+
 echo "Finished replacing. Restart ROBLOX if it's already running."
