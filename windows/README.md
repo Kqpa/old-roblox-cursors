@@ -11,7 +11,7 @@
 <div align="center">
 
 ```powershell
-iwr 'https://raw.githubusercontent.com/Kqpa/old-roblox-cursors/master/windows/replace-win.ps1' -UseBasicParsing | iex
+iwr 'https://raw.githubusercontent.com/Kqpa/old-roblox-cursors/master/windows/replace-win.ps1' | iex
 ```
 
 </div>
