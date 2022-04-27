@@ -16,7 +16,8 @@ iwr -useb 'https://raw.githubusercontent.com/Kqpa/old-roblox-cursors/master/wind
 
 </div>
 
-> ***Note**: If you get an error, you might need to change the execution policy by running the command below:*
+> ***Note**: If you get an error, you might need to change the execution policy by running the command below:* 
+> After running so, press `A` to accept all.
 
 <div align="center">
 
