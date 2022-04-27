@@ -11,14 +11,22 @@
 <div align="center">
 
 ```powershell
-iwr 'https://raw.githubusercontent.com/Kqpa/old-roblox-cursors/master/windows/replace-win.ps1' | iex
+iwr -useb 'https://raw.githubusercontent.com/Kqpa/old-roblox-cursors/master/windows/replace-win.ps1' | iex
 ```
 
 </div>
 
-#
+> ***Note**: If you get an error, you might need to change the execution policy by running the command below:*
 
 <div align="center">
+
+<i>
+
+> ```powershell
+> Set-ExecutionPolicy RemoteSigned -scope CurrentUser
+> ```
+
+</i>
 
 ### Everytime ROBLOX updates, these changes will be <ins>**overwritten**</ins>. Run the command again to bring the old cursors back.
 
